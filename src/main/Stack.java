@@ -33,6 +33,44 @@ public class Stack {
         this.top=newNode;
         this.size++;
     }
+ public int pop(){
+        int response=-1;
+        if(this.top!= null){
+            response=this.top.getData();
+            this.top=this.top.getNext();
+            size--;
+        }
+        else{
+            System.out.println("Stack is empty!");
+        }
+        return response;
+ }
+    @Override
+   public String toString(){
+        StringBuilder result=new StringBuilder();
+        result.append("[");
+        Node temp =this.top;
+        while(temp!=null){
+            result.append(temp.getData());
+            if(temp.getNext()!=null){
+                result.append("--->");
+            }
+            temp =temp.getNext();
+        }
+        result.append("]");
+return result.toString();
+    }
 
+    public static void main(String[] args) {
+        Stack stack =new Stack();
+        System.out.println(stack);
+        for (int i = 0; i <5 ; i++) {
+            stack.push(i+1);
+        }
+        System.out.println(stack);
+        stack.pop();
+        System.out.println("After poping out");
+        System.out.println(stack);
 
+    }
 }
